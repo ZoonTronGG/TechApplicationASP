@@ -15,7 +15,7 @@ namespace TechStore
 {
     public class Startup
     {
-		public Startup(IConfiguration config )
+		public Startup(IConfiguration config)
 		{
             Configuration = config;
         }
@@ -30,6 +30,7 @@ namespace TechStore
                 opts.UseSqlServer(
                     Configuration["ConnectionStrings:TechStoreConnection"]);
             });
+            services.AddScoped<IStoreRepository, EFStoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,7 @@ namespace TechStore
             app.UseEndpoints(endpoints => {
                 endpoints.MapDefaultControllerRoute();
             });
+            SeedData.EnsurePopulated(app);
         }
     }
 }
