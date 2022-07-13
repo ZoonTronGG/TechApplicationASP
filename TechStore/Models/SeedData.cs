@@ -16,7 +16,7 @@ namespace TechStore.Models
             {
                 context.Database.Migrate();
             }
-
+            
             if (!context.Products.Any())
             {
                 context.Products.AddRange(
@@ -25,35 +25,35 @@ namespace TechStore.Models
                     Name = "PC LEGION",
                     Description = "One of the top gaming PCs we offer",
                     Category = "PC",
-                    Price = 700000
+                    Price = 70000.00m
                 },
                 new Product
                 {
                     Name = "(92015LC)/P7-C0",
                     Description = "One of the top gaming PCs we offer",
                     Category = "PC",
-                    Price = 1899000
+                    Price = 18990000.00m
                 },
                 new Product
                 {
                     Name = "Aurus Gaming",
                     Description = "One of the top gaming PCs we offer",
                     Category = "PC",
-                    Price = 700000
+                    Price = 70000.00m
                 },
                 new Product
                 {
                     Name = "LEGION LAPTOP",
                     Description = "One of the top gaming Laptops we offer",
                     Category = "Laptop",
-                    Price = 400000
+                    Price = 40000.00m
                 },
                 new Product
                 {
                     Name = "Acer Nitro",
                     Description = "One of the top gaming Laptops we offer",
                     Category = "Laptop",
-                    Price = 420000
+                    Price = 42000000.00m
                 });
             }
             context.SaveChanges();
