@@ -20,14 +20,14 @@ namespace TechStore.Infrastracture
             [ViewContext]
             [HtmlAttributeNotBound]
             public ViewContext ViewContext { get; set; }
-            public PagingInfo PagingInfo { get; set; }
+            public PagingInfo PageModel { get; set; }
             public string PageAction { get; set; }
 
             public override void Process(TagHelperContext context, TagHelperOutput output)
             {
                 IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
                 TagBuilder result = new TagBuilder("div");
-                for (int i = 1; i <= PagingInfo.TotalPages; i++)
+                for (int i = 1; i <= PageModel.TotalPages; i++)
                 {
                     TagBuilder tag = new TagBuilder("a");
                     tag.Attributes["href"] = urlHelper.Action(PageAction,

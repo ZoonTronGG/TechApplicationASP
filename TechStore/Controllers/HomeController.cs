@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechStore.Models;
 using System.Linq;
+using TechStore.Models.ViewModels;
 
 namespace TechStore.Controllers
 {
@@ -15,10 +16,20 @@ namespace TechStore.Controllers
         }
 
         public ViewResult Index(int productPage = 1)
-            => View(repository.Products
+            => View(new ProductsListViewModel
+            {
+                Products = repository.Products
             .OrderBy(p => p.ProductID)
             .Skip((productPage - 1) * PageSize)
-            .Take(PageSize));
+            .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = productPage,
+                    ItemsPerPage = PageSize,
+                    TotalItems = repository.Products.Count()
+                }
+            });
+          
         
     }
 }
