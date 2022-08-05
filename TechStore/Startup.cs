@@ -44,8 +44,11 @@ namespace TechStore
             app.UseRouting();
 
             app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute("pagination", 
+                    "Products/Page{productPage}", new { Controller = "Home", Action = "Index",});
                 endpoints.MapDefaultControllerRoute();
             });
+
             SeedData.EnsurePopulated(app);
         }
     }
